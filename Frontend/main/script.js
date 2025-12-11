@@ -1,0 +1,277 @@
+// This function is called by the `onclick` in the HTML, so it stays here.
+function toggleMenu() {
+    document.getElementById("nav-links").classList.toggle("show");
+}
+
+// This event listener waits for the entire HTML page to be loaded and ready.
+document.addEventListener('DOMContentLoaded', () => {
+
+
+    // ===== NAVBAR SHADOW ON SCROLL =====
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    }
+
+    // ===== HERO SLIDESHOW =====
+    const slidesWrapper = document.querySelector(".slides-wrapper");
+    if (slidesWrapper) {
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+
+        function showSlides() {
+            if (slides.length === 0) return;
+            slideIndex++;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            const offset = -slideIndex * 100;
+            slidesWrapper.style.transform = `translateX(${offset}%)`;
+
+            dots.forEach(dot => dot.classList.remove("active-dot"));
+            if(dots[slideIndex]) {
+                dots[slideIndex].classList.add("active-dot");
+            }
+
+            setTimeout(showSlides, 4000);
+        }
+        showSlides();
+    }
+
+    // ===== STAR ACHIEVERS SLIDER =====
+    const slider = document.querySelector('.achievers-slider');
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
+    if (slider && prevBtn && nextBtn) {
+        let currentIndex = 0;
+
+        function updateSliderPosition() {
+            const card = slider.querySelector('.achiever-card');
+            if (!card) return;
+            const cardWidth = card.offsetWidth;
+            const gap = parseInt(window.getComputedStyle(slider).gap);
+            const totalMove = cardWidth + gap;
+            const cardsInView = Math.floor(slider.parentElement.offsetWidth / totalMove);
+            const maxIndex = slider.children.length - cardsInView;
+
+            if (currentIndex < 0) {
+                currentIndex = 0;
+            }
+            if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+            slider.style.transform = `translateX(-${currentIndex * totalMove}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            updateSliderPosition();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex--;
+            updateSliderPosition();
+        });
+
+        window.addEventListener('resize', () => {
+            currentIndex = 0;
+            updateSliderPosition();
+        });
+        
+        updateSliderPosition();
+    }
+
+    // ===== CHATBOT (UPDATED LOGIC) =====
+    const chatbotWidget = document.querySelector('.chatbot-widget');
+    const chatWindow = document.querySelector('.chat-window');
+    const closeChatBtn = document.querySelector('.close-chat');
+    const chatBody = document.getElementById('chat-body');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const sendSound = document.getElementById('send-sound');
+    
+    // New API endpoint
+    const API_URL = "GEMINI_API_KEY";  // Replace with your actual endpoint URL(GEMINI_API_KEY)
+
+    if (chatbotWidget && chatWindow && closeChatBtn && chatBody && chatInput && sendBtn && sendSound) {
+        let isAudioUnlocked = false;
+
+        function unlockAudio() {
+            if (isAudioUnlocked) return;
+            sendSound.muted = false;
+            const promise = sendSound.play();
+            if (promise !== undefined) {
+                promise.then(_ => {
+                    sendSound.pause();
+                    sendSound.currentTime = 0;
+                }).catch(error => console.warn("Audio could not be unlocked automatically.", error));
+            }
+            isAudioUnlocked = true;
+        }
+
+        chatbotWidget.addEventListener('click', (e) => {
+            e.preventDefault();
+            unlockAudio();
+            chatWindow.classList.toggle('show');
+        });
+
+        closeChatBtn.addEventListener('click', () => chatWindow.classList.remove('show'));
+
+        function formatTime(date) {
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            return `${hours}:${minutes} ${ampm}`;
+        }
+
+        function addMessage(text, type, isTyping = false) {
+            const timestamp = formatTime(new Date());
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', type);
+            const messageContent = document.createElement('div');
+            messageContent.classList.add('message-content');
+            const p = document.createElement('p');
+            p.textContent = text;
+            if (isTyping) {
+                p.classList.add('typing-indicator');
+            }
+            const timeSpan = document.createElement('span');
+            timeSpan.classList.add('timestamp');
+            timeSpan.textContent = timestamp;
+            messageContent.appendChild(p);
+            messageContent.appendChild(timeSpan);
+            if (type === 'received') {
+                const avatar = document.createElement('div');
+                avatar.classList.add('bot-avatar');
+                avatar.innerHTML = '<i class="fas fa-robot"></i>';
+                messageDiv.appendChild(avatar);
+            }
+            messageDiv.appendChild(messageContent);
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+            return messageDiv;
+        }
+
+        async function handleSendMessage() {
+            const messageText = chatInput.value.trim();
+            if (!messageText) return;
+
+            addMessage(messageText, 'sent');
+            chatInput.value = '';
+
+            // Play send sound
+            if (isAudioUnlocked) {
+                sendSound.currentTime = 0;
+                sendSound.play().catch(error => console.error("Could not play the sound:", error));
+            }
+
+            const typingIndicator = addMessage("...", 'received', true);
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    // Added session_id as per the new logic
+                    body: JSON.stringify({ message: messageText, session_id: "12345" }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                typingIndicator.querySelector('p').textContent = data.reply || "Sorry, I didn't get a response.";
+                typingIndicator.querySelector('p').classList.remove('typing-indicator');
+
+            } catch (error) {
+                console.error('Error connecting to chatbot server:', error);
+                typingIndicator.querySelector('p').textContent = "Sorry, I'm having trouble connecting.";
+                typingIndicator.querySelector('p').classList.remove('typing-indicator');
+            }
+        }
+
+        sendBtn.addEventListener('click', handleSendMessage);
+        chatInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                handleSendMessage();
+            }
+        });
+    }
+});
+
+// Get the required HTML elements
+const micBtn = document.getElementById('mic-btn');
+const chatInput = document.getElementById('chat-input');
+
+// --- MIC BUTTON & SPEECH RECOGNITION ---
+
+// 1. Check for browser support
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition;
+
+if (SpeechRecognition && micBtn) {
+    recognition = new SpeechRecognition();
+    recognition.continuous = false; // Stop listening after the user pauses
+    recognition.lang = 'en-US';    // Set language
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    let isListening = false; // State tracker
+
+    // 2. Handle the click event to start or stop listening
+    micBtn.addEventListener('click', () => {
+        if (isListening) {
+            recognition.stop();
+            return;
+        }
+        try {
+            recognition.start();
+        } catch(e) {
+            console.error("Speech recognition could not be started: ", e);
+        }
+    });
+
+    // 3. Add event listeners for the recognition process
+
+    // When recognition starts
+    recognition.onstart = () => {
+        isListening = true;
+        micBtn.classList.add('active');
+        chatInput.placeholder = "Listening...";
+    };
+
+    // When recognition ends
+    recognition.onend = () => {
+        isListening = false;
+        micBtn.classList.remove('active');
+        chatInput.placeholder = "Type your message...";
+    };
+
+    // When a result is received
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        chatInput.value = transcript; // Put the transcribed text into the input field
+    };
+
+    // Handle errors
+    recognition.onerror = (event) => {
+        console.error(`Speech recognition error: ${event.error}`);
+        chatInput.placeholder = "Mic error. Please try again.";
+    };
+
+} else if (micBtn) {
+    // Hide the button if the browser doesn't support the API
+    console.warn("Speech Recognition not supported in this browser.");
+    micBtn.style.display = 'none';
+}
