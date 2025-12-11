@@ -102,101 +102,131 @@ body {
 }
 
 /* ===== NAVIGATION MENU ===== */
+
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f8f9fc;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 12px 20px;
-  gap: 25px;
-  transition: 0.3s ease;
+    background-color: #002147; /* Dark Blue from Image 2 */
+    width: 100%;
+    position: relative;
+    z-index: 999;
+    font-family: sans-serif;
 }
-.navbar.scrolled {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  background: #fff;
+
+.nav-container {
+    max-width: 1200px; /* Limits width to align with page content */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
 }
+
+/* Menu List */
 .navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 25px;
-}
-.navbar li {
-  position: relative;
-}
-.navbar a {
-  text-decoration: none;
-  color: #0d1b3d;
-  font-size: 18px;  /* bigger */
-  font-weight: 600; /* bolder */
-  padding: 8px 12px;
-  position: relative;
-  transition: color 0.3s, transform 0.2s;
-}
-.navbar a::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #ff9900;
-  transition: width 0.3s ease;
-}
-.navbar a:hover::after {
-  width: 100%;
-}
-.navbar a:hover {
-  color: #ff9900;
-  transform: translateY(-2px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
-/* Dropdown Menu */
+/* Individual Nav Items */
+.navbar ul li {
+    position: relative;
+}
+
+/* Links Styling */
+.navbar ul li a {
+    display: block;
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    padding: 15px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: background 0.3s ease;
+}
+
+/* Hover Effect */
+.navbar ul li a:hover {
+    background-color: #004a80; /* Lighter blue on hover */
+}
+
+/* Dropdown Arrow Icon */
+.navbar ul li a i {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+/* ===== DROPDOWN MENU ===== */
 .dropdown {
-  display: none;
-  position: absolute;
-  top: 110%;
-  left: 0;
-  background: #fff;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-  min-width: 220px;
-  border-radius: 8px;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff; /* White dropdown background */
+    min-width: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-top: 3px solid #ffcc00; /* Optional yellow accent */
+    z-index: 1000;
 }
+
+/* Dropdown Links */
 .dropdown a {
-  display: block;
-  padding: 12px;
-  font-size: 15px;
-  color: #0d1b3d;
-  transition: background 0.3s;
+    color: #333333 !important; /* Dark text inside white dropdown */
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: 400;
 }
+
 .dropdown a:hover {
-  background: #f4f6fb;
-  color: #ff9900;
-}
-.navbar li:hover .dropdown {
-  display: block;
-  opacity: 1;
-  transform: translateY(0px);
+    background-color: #f8f9fa !important;
+    color: #002147 !important; /* Blue text on hover */
 }
 
-/* Menu icon (mobile) */
+/* Show Dropdown on Hover */
+.dropdown-parent:hover .dropdown {
+    display: block;
+}
+
+/* ===== MOBILE MENU ICON ===== */
 .menu-icon {
-  display: none;
-  font-size: 22px;
-  cursor: pointer;
-  margin-left: 20px;
+    display: none; /* Hidden on desktop */
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
 }
 
+/* ===== RESPONSIVE DESIGN (Mobile) ===== */
+@media screen and (max-width: 992px) {
+    .menu-icon {
+        display: block; /* Show hamburger on mobile */
+    }
+
+    .navbar ul {
+        display: none; /* Hide menu by default on mobile */
+        flex-direction: column;
+        width: 100%;
+        background-color: #002147;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+
+    .navbar ul.show {
+        display: flex; /* Show when toggled */
+    }
+
+    .navbar ul li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .dropdown {
+        position: relative; /* Stack inside the menu on mobile */
+        box-shadow: none;
+        border-top: none;
+    }
+}
 /* ===== SLIDESHOW ===== */
 .slideshow-container {
   position: relative;

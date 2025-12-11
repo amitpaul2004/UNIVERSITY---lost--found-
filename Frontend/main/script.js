@@ -1,6 +1,7 @@
 // This function is called by the `onclick` in the HTML, so it stays here.
 function toggleMenu() {
-    document.getElementById("nav-links").classList.toggle("show");
+    const navLinks = document.getElementById("nav-links");
+    navLinks.classList.toggle("show-menu");
 }
 
 // This event listener waits for the entire HTML page to be loaded and ready.
