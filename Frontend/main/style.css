@@ -56,51 +56,116 @@ body {
 }
 
 /* ===== UNIVERSITY INFO BAR ===== */
+/* ===== INFO BAR SECTION ===== */
 .info-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  padding: 25px 40px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
-}
-.info-bar img {
-  height: 90px;
-}
-.contact-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  font-size: 16px;
-  color: #0d1b3d;
-}
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: 0.3s;
-}
-.contact-item:hover {
-  transform: translateY(-3px);
-}
-.contact-item i {
-  font-size: 18px;
-  color: #0d1b3d;
-  background: #f4f6fb;
-  padding: 8px;
-  border-radius: 50%;
-}
-.contact-text span {
-  font-weight: bold;
-  font-size: 16px;
-}
-.contact-text small {
-  font-size: 14px;
-  color: #333;
+    background-color: #ffffff;
+    padding: 15px 0;
+    border-bottom: 1px solid #eaeaea; /* Light border at bottom */
+    font-family: 'Segoe UI', sans-serif;
 }
 
+.info-container {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between; /* Pushes Logo to left, Info to right */
+    align-items: center;
+}
+
+/* Logo Styling */
+.logo img {
+    max-height: 70px; /* Adjust based on your logo's actual size */
+    width: auto;
+}
+
+/* Contact Info Wrapper */
+.contact-info-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Individual Contact Block */
+.contact-block {
+    display: flex;
+    align-items: center;
+    padding: 0 25px; /* Space inside each block */
+    border-right: 1px solid #e0e0e0; /* The vertical divider line */
+}
+
+/* Remove border from the last item (Address) */
+.contact-block:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+/* Icon Box Styling (Light Grey Square) */
+.icon-box {
+    width: 45px;
+    height: 45px;
+    background-color: #f4f4f4; /* Light grey background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    border-radius: 2px; /* Slight slight curve, almost square */
+}
+
+.icon-box i {
+    color: #666666; /* Dark grey icon color */
+    font-size: 20px;
+    font-weight: 400; /* Makes icons look thinner/cleaner */
+}
+
+/* Text Styling */
+.contact-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-text .label {
+    font-size: 14px;
+    color: #002147; /* Dark Navy Color for Title */
+    font-weight: 600;
+    margin-bottom: 2px;
+    line-height: 1.2;
+}
+
+.contact-text .value {
+    font-size: 13px;
+    color: #555555; /* Grey color for details */
+    font-weight: 400;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+/* Specific fix for the email/long text to prevent wrapping */
+.contact-text .value {
+    white-space: nowrap; 
+}
+
+/* ===== RESPONSIVE (Tablet/Mobile) ===== */
+@media screen and (max-width: 1100px) {
+    .info-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .contact-info-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .contact-block {
+        border-right: none; /* Remove dividers on mobile wrap */
+        padding: 10px;
+        width: 100%; /* Full width or auto based on preference */
+        justify-content: flex-start;
+    }
+}
 /* ===== NAVIGATION MENU ===== */
 .navbar {
     background-color: #f4f6f9; /* Light Grey Background */
