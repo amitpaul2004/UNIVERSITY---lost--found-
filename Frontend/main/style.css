@@ -215,7 +215,7 @@ body {
     align-items: center;
     color: #002147; /* Dark Navy Text */
     text-decoration: none;
-    padding: 0 15px; /* Spacing between text and border */
+    padding: 0 12px; /* Spacing between text and border */
     font-size: 15px;
     font-weight: 500;
     white-space: nowrap;
@@ -2022,4 +2022,29 @@ body {
 
 
 
+    /* ===== HOVER GLOW EFFECT ===== */
+
+/* 1. Add transition to the main link state for smoothness */
+.navbar ul li a {
+    /* ... keep your existing settings (display, padding, etc.) ... */
+    transition: all 0.4s ease; /* Smooths the change */
+}
+
+/* 2. The "Glow Up" Hover State */
+.navbar ul li a:hover {
+    background-color: #002147;  /* Dark Blue Background */
+    color: #ffffff;             /* White Text */
     
+    /* This creates the actual "Glow" effect around the text */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 
+                 0 0 15px rgba(255, 255, 255, 0.4); 
+                 
+    /* Optional: Adds a subtle glow to the box itself */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 3. Make the arrow icon glow white too */
+.navbar ul li a:hover i {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
