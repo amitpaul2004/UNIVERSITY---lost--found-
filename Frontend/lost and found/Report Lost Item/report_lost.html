@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JISU - Report Lost Item</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="college-header">
+        <div class="logo-wrapper">
+            <img src="https://www.jisgroup.org/images/logo.png" alt="JIS Group Logo" class="college-logo">
+        </div>
+        <div class="header-title">Student Services Portal</div>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="unique-card">
+            
+            <div class="card-visual">
+                <div class="visual-content">
+                    <h2><i class="fa-solid fa-person-circle-question"></i> Lost Something?</h2>
+                    <p>Don't worry. Fill out the details and our Examination & Security committee will help track it down.</p>
+                    
+                    <div class="info-badges">
+                        <div class="badge">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Secure Handling</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>24hr Response</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+            </div>
+
+            <div class="card-form">
+                <div class="form-header">
+                    <h3>Item Details</h3>
+                    <span class="step-indicator">Step 1 of 1</span>
+                </div>
+
+                <form class="college-form">
+                    
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Collector Name</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" placeholder="Full Name" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Phone Number</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-phone"></i>
+                                <input type="tel" placeholder="+91 98765 43210" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Your Email</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" placeholder="student@jis.ac.in" required>
+                        </div>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px dashed #ddd; margin: 10px 0;">
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Item Name</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-tag"></i>
+                                <input type="text" placeholder="e.g. Blue Backpack" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Category</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <select required>
+                                    <option value="" disabled selected>Select Category</option>
+                                    <option>Electronics</option>
+                                    <option>Documents</option>
+                                    <option>Clothing</option>
+                                    <option>Accessories</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Last Known Location</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                <input type="text" placeholder="e.g. Library 2nd Floor" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Date Lost</label>
+                            <div class="input-wrapper">
+                                <input type="date" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Description</label>
+                        <textarea placeholder="Describe brand, color, scratches, or unique marks..." rows="3"></textarea>
+                    </div>
+
+                    <div class="file-upload-box">
+                        <input type="file" id="file-upload" hidden>
+                        <label for="file-upload" class="upload-label" id="upload-text">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>Upload Image (Optional)</span>
+                        </label>
+                        <p class="ai-hint"><i class="fa-solid fa-robot"></i> AI Auto-tagging enabled</p>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Submit Report <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
