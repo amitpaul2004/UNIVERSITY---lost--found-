@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- FAVICON (browser tab icon) -->
+  <link rel="icon" type="image/png" href="/Frontend/img/logo/favicon.png">
+  <title>University Header</title>
+
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="lost.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ===== TOP BANNER ===== -->
+<div class="admission-bar">
+  <div class="left">Admission Open 2025</div>
+  <div class="right">
+    <button class="apply-btn">Apply Now</button>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== UNIVERSITY INFO ===== -->
+<div class="info-bar">
+  <div class="container info-container">
+
+    <div class="logo">
+      <img src="/Frontend/img/logo/logo.jpg" alt="University Logo">
+    </div>
+
+    <div class="contact-info-wrapper">
+
+      <div class="contact-block">
+        <div class="icon-box"><i class="far fa-envelope"></i></div>
+        <div class="contact-text">
+          <span class="label">Email</span>
+          <a href="mailto:admissions@jisuniversity.ac.in" class="value">
+            admissions@jisuniversity.ac.in
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-block">
+        <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+        <div class="contact-text">
+          <span class="label">Call</span>
+          <span class="value">+91 8697743361 / 62</span>
+        </div>
+      </div>
+
+      <div class="contact-block">
+        <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
+        <div class="contact-text">
+          <span class="label">Whatsapp</span>
+          <span class="value">8697743361</span>
+        </div>
+      </div>
+
+      <div class="contact-block no-border">
+        <div class="icon-box"><i class="fas fa-map"></i></div>
+        <div class="contact-text">
+          <span class="label">Address</span>
+          <span class="value">
+            81, Nilgunj Road, Agarpara, Kolkata-700109
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+
+    <ul id="nav-links">
+
+      <li class="nav-item dropdown-parent">
+        <a href="#">About HEI <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#">History</a>
+          <a href="#">Mission & Vision</a>
+          <a href="#">Leadership</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown-parent">
+        <a href="#">Administration <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#">Chancellor</a>
+          <a href="#">Vice Chancellor</a>
+          <a href="#">Deans</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown-parent">
+        <a href="#">Academics <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#">Departments</a>
+          <a href="#">Programs</a>
+          <a href="#">Courses</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown-parent">
+        <a href="#">Admissions & Fee <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#">Apply Now</a>
+          <a href="#">Fee Structure</a>
+          <a href="#">Scholarships</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown-parent">
+        <a href="#">Research <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#">Publications</a>
+          <a href="#">Projects</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown-parent">
+        <a href="#">Student Life <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#">Hostel</a>
+          <a href="#">Clubs</a>
+          <a href="#">Events</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown-parent">
+        <a href="#">Training & Placement <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#">Career Services</a>
+          <a href="#">Recruiters</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown-parent">
+        <a href="#">Information Corner <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#">Notices</a>
+          <a href="#">Downloads</a>
+        </div>
+      </li>
+
+      <li class="nav-item"><a href="#">Contact Us</a></li>
+      <li class="nav-item"><a href="#">Lost & Found</a></li>
+
+    </ul>
+
+    <div class="menu-icon-right">
+      <i class="fas fa-bars" onclick="toggleMenu()"></i>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <div class="banner-content">
+    <h1>Lost & Found</h1>
+  </div>
+</section>
+
+<!-- ===== LOST & FOUND OPTIONS ===== -->
+<section class="options-grid-section">
+        <div class="container">
+            <div class="grid-container">
+                
+                <div class="grid-card hidden">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-magnifying-glass-minus"></i>
+                    </div>
+                    <h3>Report Lost Item</h3>
+                    <p>Submit details about an item you have lost.</p>
+                </div>
+
+                <div class="grid-card hidden">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Report Found Item</h3>
+                    <p>Submit details about an item you have found.</p>
+                </div>
+
+                <div class="grid-card hidden">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h3>View All Items</h3>
+                    <p>Browse the list of reported lost and found items.</p>
+                </div>
+
+                <div class="grid-card hidden">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <h3>Check Claim Status</h3>
+                    <p>Track the status of your reported items.</p>
+                </div>
+
+                <div class="grid-card hidden">
+                    <div class="icon-wrapper">
+                        <i class="fa-regular fa-file-lines"></i>
+                    </div>
+                    <h3>Guidelines & Help</h3>
+                    <p>Read the rules and procedures for reclaiming items.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<!-- footer -->
+ <footer class="main-footer">
+    <div class="footer-container">
+        
+        <div class="footer-top">
+            
+            <div class="footer-col">
+                <p class="footer-about">
+                    JIS Group Educational Initiatives - the largest educational conglomerate of Eastern India with 37 Institutions, 170 programmes and 39,000 students began its journey 24 years back.
+                </p>
+                
+                <h3 class="footer-heading">Opening Hours</h3>
+                <ul class="opening-hours">
+                    <li>
+                        <span>Mon - sat</span>
+                        <span class="time">09am - 05pm</span>
+                    </li>
+                    <li>
+                        <span>Sunday</span>
+                        <span class="closed-status">Closed</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">- JISU Advantages</a></li>
+                    <li><a href="#">- Co-Curricular Activities</a></li>
+                    <li><a href="#">- Career</a></li>
+                    <li><a href="#">- Grievance Redressal Cell</a></li>
+                    <li><a href="#">- MOUs</a></li>
+                    <li><a href="#">- Holiday List</a></li>
+                    <li><a href="#">- Anti-Ragging Information</a></li>
+                    <li><a href="#">- Sitemap</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="footer-heading">Useful Links</h3>
+                <div class="double-links-container">
+                    <ul class="footer-links">
+                        <li><a href="#">- UGC</a></li>
+                        <li><a href="#">- AICTE</a></li>
+                        <li><a href="#">- BCI</a></li>
+                        <li><a href="#">- DST</a></li>
+                        <li><a href="#">- NPTEL</a></li>
+                        <li><a href="#">- JIS Group</a></li>
+                        <li><a href="#">- UGC e-Samadhan Portal</a></li>
+                    </ul>
+                    <ul class="footer-links">
+                        <li><a href="#">- MHRD</a></li>
+                        <li><a href="#">- PCI</a></li>
+                        <li><a href="#">- NCTE</a></li>
+                        <li><a href="#">- NDL</a></li>
+                        <li><a href="#">- Inflibnet</a></li>
+                        <li><a href="#">- Higher Education</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="footer-heading">Our Location</h3>
+                <div class="map-wrapper">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.398036733266!2d88.37688531496144!3d22.67616598512963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f899cdf2a3b115%3A0xc30438318856828!2sJIS%20University!5e0!3m2!1sen!2sin!4v1679999999999!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="180" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <div class="bottom-nav">
+                <a href="#">Academic Login</a> | 
+                <a href="#">Employee Login</a> | 
+                <a href="#">Online Fees Payment</a> | 
+                <a href="#"><i class="fa-solid fa-rocket"></i> 360° Virtual Tour</a>
+            </div>
+
+            <div class="footer-logos">
+                <img src="/Frontend/img/logo/22.jpg" alt="JIS University" style="height: 50px; margin: 0 10px;">
+                <img src="/Frontend/img/logo/23.jpg" alt="JIS Group" style="height: 50px; margin: 0 10px;">
+            </div>
+
+            <p class="copyright">Copyright © 2025 JIS University</p>
+        </div>
+
+    </div>
+</footer>
+<!-- JS -->
+<script src="lost.js"></script>
+
+</body>
+</html>
