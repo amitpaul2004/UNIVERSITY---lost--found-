@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- FAVICON (browser tab icon) -->
+  <link rel="icon" type="image/png" href="/Frontend/img/logo/favicon.png">
+    <title>JIS User Sign In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ================= CSS STYLES ================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1e3a8a; /* Deep Blue Background */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- Top Left Corner Design --- */
+        .corner-design {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 320px;
+            height: 220px;
+            background: white;
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            z-index: 5;
+        }
+
+        .corner-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 330px;
+            height: 230px;
+            background: #29b6f6; /* Light blue accent */
+            clip-path: polygon(0 0, 100% 0, 45% 100%, 0 100%);
+            z-index: 1;
+        }
+
+        .logo-container {
+            position: absolute;
+            /* CHANGED: Adjusted position to fit larger logo */
+            top: 10px; 
+            left: 15px;
+            z-index: 10;
+        }
+
+        .corner-logo {
+            /* CHANGED: Made logo bigger (was 80px) */
+            width: 120px;
+        }
+
+        /* --- Login Card --- */
+        .login-card {
+            background-color: white;
+            width: 400px;
+            padding: 8px;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 20;
+        }
+
+        .inner-border-box {
+            border: 2px solid #1e3a8a; /* Blue inner border */
+            padding: 40px 30px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* --- Typography --- */
+        h2 {
+            color: #555;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Form Elements --- */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        /* Dropdown Styling */
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        select:focus {
+            border-color: #1e3a8a;
+        }
+
+        /* Input Styling */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff; 
+            color: #333;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1e3a8a;
+        }
+
+        /* Button Styling */
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #1e3a8a; 
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #152c69;
+        }
+
+        /* Forgot Password Link */
+        .forgot-pass {
+            display: block;
+            margin-top: 20px;
+            color: #777;
+            text-decoration: none;
+            font-size: 13px;
+            text-align: left;
+        }
+
+        .forgot-pass i {
+            margin-right: 5px;
+            font-size: 12px;
+        }
+
+        .forgot-pass:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="corner-accent"></div>
+    <div class="corner-design">
+        <div class="logo-container">
+            <img src="https://www.jisgroup.org/images/logo.png" alt="JIS Logo" class="corner-logo">
+        </div>
+    </div>
+
+    <div class="login-card">
+        <div class="inner-border-box">
+            <h2>User Sign In</h2>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <select id="user-role" onchange="updatePlaceholder()" required>
+                        <option value="" disabled selected>Please Select</option>
+                        <option value="student">Student</option>
+                        <option value="librarian">Librarian</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="user-id" placeholder="Enter your username" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="user-pass" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Log In</button>
+
+                <a href="#" class="forgot-pass">
+                    <i class="fa-solid fa-lock"></i> Forgot your password?
+                </a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function 1: Update placeholder text
+        function updatePlaceholder() {
+            const roleSelect = document.getElementById('user-role');
+            const idInput = document.getElementById('user-id');
+            const selectedValue = roleSelect.value;
+
+            if (selectedValue === 'student') {
+                idInput.placeholder = "Enter Student ID";
+            } 
+            else if (selectedValue === 'librarian') {
+                idInput.placeholder = "Enter Librarian ID";
+            }
+        }
+
+        // Function 2: Handle Login Click -> Redirect to index.html
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevents the form from just reloading the page
+            
+            // Redirect to your main page
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+</html>
