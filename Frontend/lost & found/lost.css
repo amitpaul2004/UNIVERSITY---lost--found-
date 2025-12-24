@@ -401,6 +401,365 @@ body {
     /* Optional: Adds a slight dark tint over the whole image */
     position: relative;
 }
+/* This adds the dark overlay to the whole image to make it look like your screenshot */
+.page-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity (0.4) for darkness */
+}
+.banner-content {
+    /* The specific black box behind the text */
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    padding: 15px 40px;
+    z-index: 1; /* Ensures text stays on top of the overlay */
+}
+.banner-content h1 {
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Standard clean font */
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: capitalize; /* Ensures proper casing */
+    letter-spacing: 0.5px;
+}
+/* Section Background */
+.options-grid-section {
+    background-color: #f4f6f9; /* Light grey/blue background from screenshot */
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Prevents scrollbars during animation */
+}
+
+/* Grid Layout */
+
+.options-grid-section {
+    background-color: #f4f6f9; 
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 50vh; /* Ensures it takes up space even if empty */
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* --- Animated Card Style --- */
+.grid-card {
+    background-color: #ffffff;
+    padding: 40px 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    
+    /* Link Reset */
+    text-decoration: none;
+    color: inherit;
+    display: block;
+
+    /* Animation Setup */
+    opacity: 0; /* Hidden initially */
+    transform: translateY(40px); /* Pushed down initially */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* This class is added by JS to trigger the entrance */
+.grid-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover Effects */
+.grid-card:hover {
+    transform: translateY(-12px) !important; /* Lifts up on hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.grid-card:hover .icon-wrapper i {
+    transform: scale(1.15);
+    color: #002147; /* JIS Navy Blue */
+}
+
+/* Icon & Text Styling */
+.icon-wrapper {
+    margin-bottom: 25px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-wrapper i {
+    font-size: 48px;
+    color: #718096; /* Grey */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.grid-card h3 {
+    font-family: 'Segoe UI', sans-serif;
+    color: #002147;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.grid-card p {
+    font-family: 'Segoe UI', sans-serif;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background-color: #f4f6f9; /* Light Grey Background */
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.nav-container {
+    max-width: 1350px; /* Wide container to fit all items */
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spreads items and hamburger */
+    height: 55px; /* Fixed height for the bar */
+}
+
+/* ===== MENU LIST ===== */
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* ===== NAV ITEMS ===== */
+.navbar ul li {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* Vertical Separator Line */
+    border-right: 1px solid #d1d5db; /* Grey divider line */
+}
+
+/* Remove border from the last item if needed, 
+   but strictly based on image, "Contact Us" also has a border before the icon */
+.navbar ul li:first-child {
+   /* border-left: 1px solid #d1d5db; Optional if you want a left border too */
+}
+
+.navbar ul li a {
+    display: flex;
+    align-items: center;
+    color: #002147; /* Dark Navy Text */
+    text-decoration: none;
+    padding: 0 12px; /* Spacing between text and border */
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    height: 100%;
+}
+
+.navbar ul li a:hover {
+    background-color: #e9ecef; /* Slight darkening on hover */
+    color: #0056b3;
+}
+
+.navbar ul li a i {
+    margin-left: 6px;
+    font-size: 12px;
+    color: #6c757d; /* Lighter grey for the arrow icon */
+}
+
+/* ===== DROPDOWN MENU ===== */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -1px; /* Align with border */
+    background-color: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-top: 3px solid #002147;
+    z-index: 1000;
+}
+
+.dropdown a {
+    display: block;
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333 !important;
+    height: auto; /* Reset height for dropdown items */
+}
+
+.dropdown a:hover {
+    background-color: #f8f9fa;
+    color: #002147 !important;
+}
+
+.navbar ul li:hover .dropdown {
+    display: block;
+}
+
+/* ===== HAMBURGER ICON (RIGHT SIDE) ===== */
+.menu-icon-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-left: 20px;
+    border-left: 1px solid #d1d5db; /* Separator for the icon */
+}
+
+.menu-icon-right i {
+    font-size: 24px;
+    color: #002147;
+    cursor: pointer;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 1200px) {
+    .navbar ul {
+        display: none; /* Hidden on mobile/tablet */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #ffffff;
+        height: auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+    
+    .navbar ul.show-menu {
+        display: flex;
+    }
+
+    .navbar ul li {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        height: 50px;
+    }
+
+    .menu-icon-right {
+        border-left: none; /* Remove border on mobile if needed */
+        margin-left: auto;
+    }
+}
+/* ===== SLIDESHOW ===== */
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  /* REMOVED: height: 500px; */
+  margin: 20px auto 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.slides-wrapper {
+  display: flex;
+  width: 90%; /* 4 slides */
+  height: 100%;
+  transition: transform 1s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dots remain the same */
+.dots {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background 0.6s ease;
+  cursor: pointer;
+}
+.active-dot {
+  background-color: #ff9900;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar ul {
+    flex-direction: column;
+    display: none;
+    width: 100%;
+  }
+  .navbar ul.show {
+    display: flex;
+  }
+  .dropdown {
+    position: static;
+    box-shadow: none;
+  }
+  .menu-icon {
+    display: block;
+  }
+}
+.page-banner {
+    /* Set the height of the banner */
+    height: 350px; 
+    width: 100%;
+    
+    /* Background Image Settings */
+    background-image: url('/Frontend/img/jisu-bg.jpg'); 
+    background-size: cover;      /* Ensures image covers the whole area */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+    
+    /* Flexbox to center the text box */
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    
+    /* Optional: Adds a slight dark tint over the whole image */
+    position: relative;
+}
 
 /* This adds the dark overlay to the whole image to make it look like your screenshot */
 .page-banner::before {
@@ -454,6 +813,9 @@ body {
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-decoration: none; /* Removes the underline */
+    color: inherit;        /* Keeps your original text color */
+    display: block;
     
     /* Animation Initial State */
     opacity: 0;

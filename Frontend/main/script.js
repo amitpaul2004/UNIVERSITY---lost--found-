@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendSound = document.getElementById('send-sound');
     
     // New API endpoint
-    const API_URL = "GEMINI_API_KEY";  // Replace with your actual endpoint URL(GEMINI_API_KEY)
+    const API_URL = "GEMINI_API_KEY";  // Replace with y our actual endpoint URL(GEMINI_API_KEY)
 
     if (chatbotWidget && chatWindow && closeChatBtn && chatBody && chatInput && sendBtn && sendSound) {
         let isAudioUnlocked = false;
