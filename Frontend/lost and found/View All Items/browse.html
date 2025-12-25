@@ -3,91 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JISU - Browse Lost Items</title>
+    <title>JISU - Browse Items</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header class="college-header">
+    <header class="college-header fixed-top">
         <div class="logo-wrapper">
             <img src="https://www.jisgroup.org/images/logo.png" alt="JIS Group Logo" class="college-logo">
         </div>
         <div class="header-title">STUDENT SERVICES PORTAL</div>
     </header>
 
+    <section class="hero-search-section">
+        <div class="hero-content">
+            <h1>Browse Lost & Found</h1>
+            <p>Search reported items across the campus network.</p>
+            
+            <div class="floating-search-bar">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search by name, location, or category...">
+                <div class="filter-dropdown-wrapper">
+                    <select id="filterSelect" onchange="applyFilter()">
+                        <option value="all">Show All</option>
+                        <option value="lost">Lost Items</option>
+                        <option value="found">Found Items</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+                </div>
+            </div>
+
+            <div class="stats-pills animate-fade-in">
+                <div class="pill total">
+                    <i class="fa-solid fa-layer-group"></i> 
+                    <span id="total-count">0</span> Total
+                </div>
+                <div class="pill lost">
+                    <i class="fa-solid fa-circle-exclamation"></i> 
+                    <span id="lost-count">0</span> Lost
+                </div>
+                <div class="pill found">
+                    <i class="fa-solid fa-circle-check"></i> 
+                    <span id="found-count">0</span> Found
+                </div>
+            </div>
+        </div>
+    </section>
+
     <main class="browse-container">
-
-        <section class="stats-section">
-            <div class="stat-box">
-                <span class="stat-number" style="color: #1e2a5e;">4</span>
-                <span class="stat-label">Total Items</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number" style="color: #e67e22;">2</span>
-                <span class="stat-label">Unclaimed</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number" style="color: #2ecc71;">2</span>
-                <span class="stat-label">Claimed</span>
-            </div>
-        </section>
-
-        <section class="search-section">
-            <h2 class="section-title">Browse Items</h2>
+        
+        <div class="items-grid" id="itemsGrid">
             
-            <div class="search-filter-container">
-                <div class="search-bar-wrapper">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" class="search-input" placeholder="Search items by name, description, or location...">
+            <div class="item-card found-card js-scroll-anim" data-type="found">
+                <div class="card-status-badge">Found</div>
+                <div class="card-image-wrapper">
+                    <img src="https://via.placeholder.com/300x200/3b82f6/ffffff?text=Blue+Backpack" alt="Item">
                 </div>
-                
-                <select class="filter-dropdown">
-                    <option value="all">All Items</option>
-                    <option value="unclaimed">Unclaimed</option>
-                    <option value="claimed">Claimed</option>
-                </select>
-            </div>
-        </section>
-
-        <section class="items-list">
-            
-            <div class="item-card">
-                <div class="card-info">
-                    <div class="card-header">
-                        <h3 class="item-title">Blue Wallet</h3>
-                        <div class="item-tags">
-                            <span class="tag category-tag">accessories</span>
-                            <span class="tag status-tag unclaimed">Unclaimed</span>
-                        </div>
+                <div class="card-content">
+                    <span class="item-category">Accessories</span>
+                    <h3 class="item-title">Blue Nike Backpack</h3>
+                    <div class="item-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Canteen Area</span>
+                        <span><i class="fa-regular fa-calendar"></i> Today, 10:30 AM</span>
                     </div>
-                    
-                    <p class="item-description">Navy blue leather wallet with student ID inside</p>
-                    
-                    <div class="item-details">
-                        <div class="detail-row">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <span>Library - 2nd Floor Reading Room</span>
-                        </div>
-                        <div class="detail-row">
-                            <i class="fa-regular fa-calendar"></i>
-                            <span>12/8/2025</span>
-                        </div>
-                        <div class="detail-row">
-                            <i class="fa-regular fa-user"></i>
-                            <span>Found by: Rajesh Kumar</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card-image">
-                    <img src="https://via.placeholder.com/150x150/1e2a5e/ffffff?text=Wallet" alt="Blue Wallet">
+                    <button class="view-btn">View Details</button>
                 </div>
             </div>
-            
-            </section>
+
+            <div class="item-card lost-card js-scroll-anim" data-type="lost">
+                <div class="card-status-badge">Lost</div>
+                <div class="card-image-wrapper">
+                    <div class="no-image-placeholder lost-bg"><i class="fa-solid fa-laptop"></i></div>
+                </div>
+                <div class="card-content">
+                    <span class="item-category">Electronics</span>
+                    <h3 class="item-title">Dell XPS Laptop</h3>
+                    <div class="item-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Library 3rd Floor</span>
+                        <span><i class="fa-regular fa-calendar"></i> Yesterday</span>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="item-card found-card js-scroll-anim" data-type="found">
+                <div class="card-status-badge">Found</div>
+                <div class="card-image-wrapper">
+                    <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=Water+Bottle" alt="Item">
+                </div>
+                <div class="card-content">
+                    <span class="item-category">Others</span>
+                    <h3 class="item-title">Metal Water Bottle</h3>
+                    <div class="item-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Main Audi</span>
+                        <span><i class="fa-regular fa-calendar"></i> 12 Oct, 2025</span>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+            </div>
+
+             <div class="item-card lost-card js-scroll-anim" data-type="lost">
+                <div class="card-status-badge">Lost</div>
+                <div class="card-image-wrapper">
+                    <img src="https://via.placeholder.com/300x200/ff9f76/ffffff?text=ID+Card" alt="Item">
+                </div>
+                <div class="card-content">
+                    <span class="item-category">Documents</span>
+                    <h3 class="item-title">Student ID Card</h3>
+                    <div class="item-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Near Gate No. 2</span>
+                        <span><i class="fa-regular fa-calendar"></i> Today</span>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="empty-state" id="emptyState">
+            <div class="empty-illustration">
+                <div class="circle-bg"></div>
+                <i class="fa-solid fa-box-open"></i>
+            </div>
+            <h3 id="empty-title">No Results Found</h3>
+            <p id="empty-desc">We couldn't find any items matching your search.</p>
+            <button class="reset-btn" onclick="resetSearch()">View All Items</button>
+        </div>
 
     </main>
 
+    <script src="script.js"></script>
 </body>
 </html>
