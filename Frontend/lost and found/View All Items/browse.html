@@ -25,7 +25,7 @@
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 <input type="text" id="searchInput" placeholder="Search by name, location, or category...">
                 <div class="filter-dropdown-wrapper">
-                    <select id="filterSelect" onchange="applyFilter()">
+                    <select id="filterSelect">
                         <option value="all">Show All</option>
                         <option value="lost">Lost Items</option>
                         <option value="found">Found Items</option>
@@ -35,18 +35,9 @@
             </div>
 
             <div class="stats-pills animate-fade-in">
-                <div class="pill total">
-                    <i class="fa-solid fa-layer-group"></i> 
-                    <span id="total-count">0</span> Total
-                </div>
-                <div class="pill lost">
-                    <i class="fa-solid fa-circle-exclamation"></i> 
-                    <span id="lost-count">0</span> Lost
-                </div>
-                <div class="pill found">
-                    <i class="fa-solid fa-circle-check"></i> 
-                    <span id="found-count">0</span> Found
-                </div>
+                <div class="pill total"><i class="fa-solid fa-layer-group"></i> <span id="total-count">0</span> Total</div>
+                <div class="pill lost"><i class="fa-solid fa-circle-exclamation"></i> <span id="lost-count">0</span> Lost</div>
+                <div class="pill found"><i class="fa-solid fa-circle-check"></i> <span id="found-count">0</span> Found</div>
             </div>
         </div>
     </section>
@@ -55,24 +46,46 @@
         
         <div class="items-grid" id="itemsGrid">
             
-            <div class="item-card found-card js-scroll-anim" data-type="found">
+            <div class="item-card found-card js-scroll-anim" 
+                 data-type="found"
+                 data-title="Blue Nike Backpack"
+                 data-category="Accessories"
+                 data-status="Found"
+                 data-location="Canteen Area"
+                 data-date="25 Dec, 2025" 
+                 data-collector="Rajesh Kumar"
+                 data-phone="+91 98765 43210"
+                 data-email="rajesh.k@jis.ac.in"
+                 data-desc="Navy blue Nike backpack found under table 4. Contains some notebooks and a water bottle."
+                 data-image="https://via.placeholder.com/300x200/3b82f6/ffffff?text=Blue+Backpack">
+                 
                 <div class="card-status-badge">Found</div>
                 <div class="card-image-wrapper">
-                    <img src="https://via.placeholder.com/300x200/3b82f6/ffffff?text=Blue+Backpack" alt="Item">
+                    <img src="/Frontend/lost and found/View All Items/img/nike.png" alt="Item">
                 </div>
                 <div class="card-content">
                     <span class="item-category">Accessories</span>
                     <h3 class="item-title">Blue Nike Backpack</h3>
                     <div class="item-meta">
                         <span><i class="fa-solid fa-location-dot"></i> Canteen Area</span>
-                        <span><i class="fa-regular fa-calendar"></i> Today, 10:30 AM</span>
+                        <span><i class="fa-regular fa-calendar"></i> 25 Dec, 2025</span>
                     </div>
                     <button class="view-btn">View Details</button>
                 </div>
             </div>
 
-            <div class="item-card lost-card js-scroll-anim" data-type="lost">
-                <div class="card-status-badge">Lost</div>
+            <div class="item-card lost-card js-scroll-anim" 
+                 data-type="lost"
+                 data-title="Dell XPS Laptop"
+                 data-category="Electronics"
+                 data-status="Lost"
+                 data-location="Library 3rd Floor"
+                 data-date="24 Dec, 2025"
+                 data-collector="Amit Paul"
+                 data-phone="+91 88888 99999"
+                 data-email="amit.paul@jisu.ac.in"
+                 data-desc="Silver Dell XPS 13 laptop. Has a sticker of a cat on the lid. Lost near the reading section."
+                 data-image=""> <div class="card-status-badge">Lost</div>
                 <div class="card-image-wrapper">
                     <div class="no-image-placeholder lost-bg"><i class="fa-solid fa-laptop"></i></div>
                 </div>
@@ -81,13 +94,25 @@
                     <h3 class="item-title">Dell XPS Laptop</h3>
                     <div class="item-meta">
                         <span><i class="fa-solid fa-location-dot"></i> Library 3rd Floor</span>
-                        <span><i class="fa-regular fa-calendar"></i> Yesterday</span>
+                        <span><i class="fa-regular fa-calendar"></i> 24 Dec, 2025</span>
                     </div>
                     <button class="view-btn">View Details</button>
                 </div>
             </div>
 
-            <div class="item-card found-card js-scroll-anim" data-type="found">
+            <div class="item-card found-card js-scroll-anim" 
+                 data-type="found"
+                 data-title="Metal Water Bottle"
+                 data-category="Others"
+                 data-status="Found"
+                 data-location="Main Audi"
+                 data-date="12 Oct, 2025"
+                 data-collector="Security Guard (Gate 1)"
+                 data-phone="+91 12312 31231"
+                 data-email="security@jisgroup.org"
+                 data-desc="Black metal water bottle, Milton brand. Found on the last row of seats."
+                 data-image="https://via.placeholder.com/300x200/2ecc71/ffffff?text=Water+Bottle">
+
                 <div class="card-status-badge">Found</div>
                 <div class="card-image-wrapper">
                     <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=Water+Bottle" alt="Item">
@@ -103,7 +128,19 @@
                 </div>
             </div>
 
-             <div class="item-card lost-card js-scroll-anim" data-type="lost">
+             <div class="item-card lost-card js-scroll-anim" 
+                  data-type="lost"
+                  data-title="Student ID Card"
+                  data-category="Documents"
+                  data-status="Lost"
+                  data-location="Near Gate No. 2"
+                  data-date="25 Dec, 2025"
+                  data-collector="Priya Das"
+                  data-phone="+91 77777 88888"
+                  data-email="priya.das@jisu.ac.in"
+                  data-desc="Standard JIS University ID Card. Name: Priya Das, Dept: CSE, Year: 2nd."
+                  data-image="https://via.placeholder.com/300x200/ff9f76/ffffff?text=ID+Card">
+
                 <div class="card-status-badge">Lost</div>
                 <div class="card-image-wrapper">
                     <img src="https://via.placeholder.com/300x200/ff9f76/ffffff?text=ID+Card" alt="Item">
@@ -113,7 +150,7 @@
                     <h3 class="item-title">Student ID Card</h3>
                     <div class="item-meta">
                         <span><i class="fa-solid fa-location-dot"></i> Near Gate No. 2</span>
-                        <span><i class="fa-regular fa-calendar"></i> Today</span>
+                        <span><i class="fa-regular fa-calendar"></i> 25 Dec, 2025</span>
                     </div>
                     <button class="view-btn">View Details</button>
                 </div>
@@ -132,6 +169,64 @@
         </div>
 
     </main>
+
+    <div id="details-modal" class="modal-overlay">
+        <div class="modal-box details-box">
+            <button class="close-modal-btn" onclick="closeDetailsModal()"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="modal-content-flex">
+                <div class="modal-image-side">
+                    <img id="modal-img" src="" alt="Item Image">
+                    <div id="modal-no-img" class="no-img-placeholder" style="display:none;">
+                        <i class="fa-solid fa-image"></i>
+                        <span>No Image Available</span>
+                    </div>
+                    <div class="modal-status-badge" id="modal-status">Found</div>
+                </div>
+
+                <div class="modal-info-side">
+                    <span class="modal-category" id="modal-category">Category</span>
+                    <h2 id="modal-title">Item Name</h2>
+                    
+                    <div class="info-grid">
+                        <div class="info-item full-width">
+                            <label>Description</label>
+                            <p id="modal-desc">Description text...</p>
+                        </div>
+                        
+                        <div class="info-item">
+                            <label>Date Lost/Found</label>
+                            <p id="modal-date"><i class="fa-regular fa-calendar"></i> <span>-</span></p>
+                        </div>
+
+                        <div class="info-item">
+                            <label>Location</label>
+                            <p id="modal-location"><i class="fa-solid fa-location-dot"></i> <span>-</span></p>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="info-item">
+                            <label>Collector/Reporter</label>
+                            <p id="modal-collector"><i class="fa-solid fa-user"></i> <span>-</span></p>
+                        </div>
+
+                        <div class="info-item">
+                            <label>Phone Number</label>
+                            <p id="modal-phone"><i class="fa-solid fa-phone"></i> <span>-</span></p>
+                        </div>
+
+                        <div class="info-item full-width">
+                            <label>Email Address</label>
+                            <p id="modal-email"><i class="fa-solid fa-envelope"></i> <span>-</span></p>
+                        </div>
+                    </div>
+
+                    <button class="contact-btn" onclick="closeDetailsModal()">Close Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
