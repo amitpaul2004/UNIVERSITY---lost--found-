@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JISU - Browse Lost Items</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="college-header">
+        <div class="logo-wrapper">
+            <img src="https://www.jisgroup.org/images/logo.png" alt="JIS Group Logo" class="college-logo">
+        </div>
+        <div class="header-title">STUDENT SERVICES PORTAL</div>
+    </header>
+
+    <main class="browse-container">
+
+        <section class="stats-section">
+            <div class="stat-box">
+                <span class="stat-number" style="color: #1e2a5e;">4</span>
+                <span class="stat-label">Total Items</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" style="color: #e67e22;">2</span>
+                <span class="stat-label">Unclaimed</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" style="color: #2ecc71;">2</span>
+                <span class="stat-label">Claimed</span>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <h2 class="section-title">Browse Items</h2>
+            
+            <div class="search-filter-container">
+                <div class="search-bar-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search items by name, description, or location...">
+                </div>
+                
+                <select class="filter-dropdown">
+                    <option value="all">All Items</option>
+                    <option value="unclaimed">Unclaimed</option>
+                    <option value="claimed">Claimed</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="items-list">
+            
+            <div class="item-card">
+                <div class="card-info">
+                    <div class="card-header">
+                        <h3 class="item-title">Blue Wallet</h3>
+                        <div class="item-tags">
+                            <span class="tag category-tag">accessories</span>
+                            <span class="tag status-tag unclaimed">Unclaimed</span>
+                        </div>
+                    </div>
+                    
+                    <p class="item-description">Navy blue leather wallet with student ID inside</p>
+                    
+                    <div class="item-details">
+                        <div class="detail-row">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Library - 2nd Floor Reading Room</span>
+                        </div>
+                        <div class="detail-row">
+                            <i class="fa-regular fa-calendar"></i>
+                            <span>12/8/2025</span>
+                        </div>
+                        <div class="detail-row">
+                            <i class="fa-regular fa-user"></i>
+                            <span>Found by: Rajesh Kumar</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-image">
+                    <img src="https://via.placeholder.com/150x150/1e2a5e/ffffff?text=Wallet" alt="Blue Wallet">
+                </div>
+            </div>
+            
+            </section>
+
+    </main>
+
+</body>
+</html>

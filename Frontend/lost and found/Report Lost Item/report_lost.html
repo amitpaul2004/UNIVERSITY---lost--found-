@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/png" href="/Frontend/img/logo/favicon.png">
     <title>JISU - Report Lost Item</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -134,6 +135,20 @@
 
                 </form>
             </div>
+        </div>
+    </div>
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Report Submitted!</h3>
+            <p class="modal-message">
+                Thank you, <span id="collector-name-display" style="font-weight:bold;">Collector</span>. 
+                <br><br>
+                Please submit the physical item to the <strong>Library</strong> immediately for safekeeping.
+            </p>
+            <button class="modal-close-btn" onclick="closeModal()">Okay, I will do that</button>
         </div>
     </div>
 

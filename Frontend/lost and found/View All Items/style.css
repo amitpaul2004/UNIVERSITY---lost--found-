@@ -1,0 +1,275 @@
+/* ================= CSS STYLES ================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f9faff; /* Very light background for the page body */
+}
+
+/* --- Professional Header --- */
+.college-header {
+    background-color: #1e2a5e; /* Dark blue background */
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo-wrapper {
+    /* White rounded box for the logo */
+    background-color: #ffffff; 
+    padding: 8px 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.college-logo {
+    height: 50px;
+    width: auto;
+}
+
+.header-title {
+    color: #ffffff; /* White text */
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Uppercase text */
+}
+
+/* --- Main Content Container --- */
+.browse-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- Statistics Section --- */
+.stats-section {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    /* Colors are set inline in HTML to match image */
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #718096;
+    margin-top: 5px;
+}
+
+/* --- Search & Filter Section --- */
+.search-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 24px;
+    color: #2d3748;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.search-filter-container {
+    display: flex;
+    gap: 20px;
+}
+
+.search-bar-wrapper {
+    flex: 1; /* Takes up remaining space */
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px 12px 45px; /* Padding for icon */
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #4a5568;
+    background-color: #ffffff;
+}
+
+.search-input::placeholder {
+    color: #a0aec0;
+}
+
+.filter-dropdown {
+    padding: 12px 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #4a5568;
+    background-color: #ffffff;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+/* --- Items List Section --- */
+.items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Item Card Design --- */
+.item-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.item-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.card-info {
+    flex: 1; /* Takes up available space */
+    padding-right: 20px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.item-title {
+    font-size: 20px;
+    color: #1e2a5e;
+    font-weight: 700;
+}
+
+.item-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.tag {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+.category-tag {
+    background-color: #e9d8fd; /* Purple background for 'accessories' */
+    color: #6b46c1;
+}
+
+.status-tag.unclaimed {
+    background-color: #fefcbf; /* Yellow/Gold background for 'Unclaimed' */
+    color: #b7791f;
+}
+
+.item-description {
+    font-size: 15px;
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #718096;
+}
+
+.detail-row i {
+    margin-right: 10px;
+    color: #a0aec0;
+    width: 16px;
+    text-align: center;
+}
+
+.card-image {
+    flex-shrink: 0; /* Prevents image from shrinking */
+}
+
+.card-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover; /* Ensures image fills the square without distortion */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .college-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .stats-section {
+        gap: 30px;
+    }
+
+    .search-filter-container {
+        flex-direction: column;
+    }
+
+    .filter-dropdown {
+        width: 100%;
+    }
+
+    .item-card {
+        flex-direction: column-reverse; /* Image on top on mobile */
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-info {
+        padding-right: 0;
+        padding-top: 20px;
+        width: 100%;
+    }
+
+    .card-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .detail-row {
+        justify-content: center;
+    }
+}
