@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const total = itemCards.length;
         const lost = document.querySelectorAll('.item-card[data-type="lost"]').length;
         const found = document.querySelectorAll('.item-card[data-type="found"]').length;
-
         document.getElementById('total-count').textContent = total;
         document.getElementById('lost-count').textContent = lost;
         document.getElementById('found-count').textContent = found;
@@ -60,13 +59,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- 3. DETAILS MODAL POPULATOR ---
     const modal = document.getElementById('details-modal');
-    const viewButtons = document.querySelectorAll('.view-btn');
+    // Triggers on BOTH "View Details" button AND the Image wrapper
+    const triggers = document.querySelectorAll('.view-btn, .js-open-modal');
 
-    viewButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            // Find parent card regardless of what was clicked
             const card = e.target.closest('.item-card');
 
-            // Set Text
+            // Populate Text
             document.getElementById('modal-title').textContent = card.getAttribute('data-title');
             document.getElementById('modal-category').textContent = card.getAttribute('data-category');
             document.getElementById('modal-desc').textContent = card.getAttribute('data-desc');
@@ -83,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
             statusBadge.textContent = status;
             statusBadge.style.background = status.toLowerCase() === 'lost' ? '#ff9f76' : '#2ecc71';
 
-            // Set Image
+            // Set Image or Placeholder
             const imageSrc = card.getAttribute('data-image');
             const imgEl = document.getElementById('modal-img');
             const noImgEl = document.getElementById('modal-no-img');

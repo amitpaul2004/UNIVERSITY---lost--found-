@@ -14,7 +14,7 @@ body {
     background-color: var(--bg-light);
     background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
     background-size: 20px 20px;
-    padding-top: 70px;
+    padding-top: 70px; /* Space for fixed header */
 }
 
 /* --- 1. Header --- */
@@ -87,7 +87,10 @@ body {
 .lost-card .card-status-badge { background: var(--lost-color); }
 .found-card .card-status-badge { background: var(--found-color); }
 
-.card-image-wrapper { height: 180px; overflow: hidden; position: relative; }
+.card-image-wrapper { 
+    height: 180px; overflow: hidden; position: relative; 
+    cursor: pointer; /* Makes it look clickable */
+}
 .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
 .item-card:hover img { transform: scale(1.1); }
 .no-image-placeholder { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 50px; color: white; background: linear-gradient(45deg, #ff9f76, #ff7e5f); }
@@ -150,3 +153,12 @@ body {
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; animation-delay: 0.3s; opacity: 0; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content-flex { flex-direction: column; min-height: auto; max-height: 90vh; overflow-y: scroll; }
+    .modal-image-side { width: 100%; height: 200px; }
+    .modal-info-side { width: 100%; padding: 25px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .info-item.full-width { grid-column: span 1; }
+}
