@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JISU - Track Claim Status</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="college-header fixed-top">
+        <div class="logo-wrapper">
+            <a href="index.html" style="display: flex; align-items: center;">
+                <img src="https://www.jisgroup.org/images/logo.png" alt="JIS Group Logo" class="college-logo">
+            </a>
+        </div>
+        <div class="header-title">STUDENT SERVICES PORTAL</div>
+    </header>
+
+    <main class="status-container">
+        
+        <section class="search-card animate-slide-down">
+            <div class="icon-badge">
+                <i class="fa-solid fa-magnifying-glass-location"></i>
+            </div>
+            <h1>Track Your Claim</h1>
+            <p>Enter the Reference ID sent to your official student email.</p>
+            
+            <div class="input-wrapper">
+                <input type="text" id="claimInput" placeholder="e.g. CLM-2025-001" autocomplete="off">
+                <button class="track-btn" onclick="fetchClaimStatus()">
+                    <span>Track Status</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            <p class="demo-hint">💡 Try <b>CLM-001</b> (Review), <b>CLM-002</b> (Ready), or <b>CLM-003</b> (Rejected)</p>
+        </section>
+
+        <div id="result-card" class="result-card glass-effect">
+            
+            <div class="card-header">
+                <div class="item-meta">
+                    <span class="meta-label">Claim Reference</span>
+                    <h2 id="display-ref">#CLM-2025-88</h2>
+                </div>
+                <div id="main-status-badge" class="status-pill pending">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Processing
+                </div>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-box">
+                    <span class="label">Item Name</span>
+                    <h4 id="item-name">Blue Nike Backpack</h4>
+                </div>
+                <div class="detail-box">
+                    <span class="label">Reported Date</span>
+                    <h4>24 Dec, 2025</h4>
+                </div>
+                <div class="detail-box">
+                    <span class="label">Location</span>
+                    <h4>Library, 2nd Floor</h4>
+                </div>
+                <div class="detail-box">
+                    <span class="label">Estimated Resolution</span>
+                    <h4>24 - 48 Hours</h4>
+                </div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-line"></div>
+                </div>
+                
+                <div class="step-item" id="step-1">
+                    <div class="step-circle"><i class="fa-solid fa-file-arrow-up"></i></div>
+                    <div class="step-text">
+                        <h5>Submitted</h5>
+                        <small>24 Dec, 10:00 AM</small>
+                    </div>
+                </div>
+
+                <div class="step-item" id="step-2">
+                    <div class="step-circle"><i class="fa-solid fa-user-shield"></i></div>
+                    <div class="step-text">
+                        <h5>Under Review</h5>
+                        <small>Verification in progress</small>
+                    </div>
+                </div>
+
+                <div class="step-item" id="step-3">
+                    <div class="step-circle"><i class="fa-solid fa-box-check"></i></div>
+                    <div class="step-text">
+                        <h5>Approval</h5>
+                        <small>Admin Decision</small>
+                    </div>
+                </div>
+
+                <div class="step-item" id="step-4">
+                    <div class="step-circle"><i class="fa-solid fa-handshake"></i></div>
+                    <div class="step-text">
+                        <h5>Ready/Closed</h5>
+                        <small>Final Handover</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="note">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>Please bring your Student ID Card for verification during pickup.</span>
+                </div>
+                <button class="print-btn" onclick="window.print()">Download Receipt</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
