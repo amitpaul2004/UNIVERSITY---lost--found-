@@ -2,52 +2,82 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const form = document.getElementById('reportForm');
     const modal = document.getElementById('success-modal');
+    const uploadInput = document.getElementById('file-upload');
+    const uploadLabel = document.getElementById('upload-label');
+
+    // Visual feedback for file upload
+    if(uploadInput) {
+        uploadInput.addEventListener('change', function() {
+            if(this.files.length > 0) {
+                const fileName = this.files[0].name;
+                uploadLabel.style.borderColor = "#10b981";
+                uploadLabel.style.backgroundColor = "#ecfdf5";
+                
+                const iconCircle = uploadLabel.querySelector('.icon-circle');
+                iconCircle.style.backgroundColor = "#d1fae5";
+                iconCircle.querySelector('i').className = "fa-solid fa-check";
+                iconCircle.querySelector('i').style.color = "#10b981";
+
+                const uploadText = uploadLabel.querySelector('.upload-text');
+                uploadText.querySelector('span').textContent = fileName;
+                uploadText.querySelector('small').textContent = "File selected successfully";
+                uploadText.querySelector('small').style.color = "#10b981";
+            }
+        });
+    }
 
     if(form) {
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // 1. Stop page reload
+            e.preventDefault();
 
-            // 2. Change Button Text to "Sending..."
-            const btn = document.querySelector('.submit-btn');
+            const btn = document.querySelector('.submit-btn-modern');
             const originalText = btn.innerHTML;
             btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+            btn.style.opacity = '0.8';
 
-            // 3. Get Data
-            const collectorName = document.getElementById('collector-input').value;
+            // 1. Get Data (Updated ID here)
+            const nameValue = document.getElementById('name-input').value; // Changed ID
             const userEmail = document.getElementById('email-input').value;
             const itemName = document.getElementById('item-input').value;
             const dateLost = document.getElementById('date-input').value;
             const location = document.getElementById('location-input').value;
 
-            // 4. Generate Unique ID
+            // 2. Generate ID
             const randomNum = Math.floor(1000 + Math.random() * 9000);
             const refId = `#CLM-${new Date().getFullYear()}-${randomNum}`;
 
-            // 5. Send to Backend
+            // 3. Send to Backend
             fetch('http://localhost:5000/send-report', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    userEmail, collectorName, itemName, refId, dateLost, location
+                    // We map the new 'nameValue' to 'collectorName' 
+                    // so your existing backend server still understands it.
+                    collectorName: nameValue, 
+                    userEmail: userEmail,
+                    itemName: itemName,
+                    refId: refId,
+                    dateLost: dateLost,
+                    location: location
                 })
             })
             .then(response => {
                 if(response.ok) {
-                    // 6. Update & Show Modal
                     document.getElementById('generated-ref-id').textContent = refId;
                     document.getElementById('user-email-display').textContent = userEmail;
                     modal.classList.add('active');
-                    form.reset(); // Clear form
+                    form.reset();
                 } else {
-                    alert('Error: Could not send email. Check console.');
+                    alert('Error sending email. Is the backend running?');
                 }
             })
-            .catch(error => {
-                console.error(error);
-                alert('Server Error. Make sure backend is running.');
+            .catch(err => {
+                console.error(err);
+                alert('Server error. Run "node server.js" in backend folder.');
             })
             .finally(() => {
-                btn.innerHTML = originalText; // Reset button text
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
             });
         });
     }

@@ -1,32 +1,265 @@
-/* Modal Overlay */
+/* ================= MODERN & UNIQUE UI STYLES ================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Use a modern font */
+}
+
+body {
+    background-color: #f4f7fd; /* Softer background */
+    /* Subtle background pattern */
+    background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 24px 24px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- OFFICIAL HEADER --- */
+.college-header {
+    background-color: #1e2a5e;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(30, 42, 94, 0.1);
+    z-index: 10;
+}
+.logo-wrapper { background: #fff; padding: 6px 14px; border-radius: 10px; }
+.college-logo { height: 45px; }
+.header-title { color: #fff; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; }
+
+/* --- MAIN CONTAINER & SPLIT CARD --- */
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.report-card-split {
+    display: flex;
+    background: #ffffff;
+    width: 1000px;
+    max-width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(30, 42, 94, 0.1);
+}
+
+/* --- LEFT SIDE: VISUAL --- */
+.card-visual {
+    flex: 2;
+    background: linear-gradient(135deg, #1e2a5e, #3b5bdb);
+    color: white;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.visual-content { position: relative; z-index: 2; }
+.visual-content h1 { font-size: 36px; font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
+.visual-content p { font-size: 16px; opacity: 0.9; margin-bottom: 30px; }
+.info-list { list-style: none; }
+.info-list li { margin-bottom: 15px; display: flex; align-items: center; font-size: 15px; }
+.info-list li i { margin-right: 12px; font-size: 18px; color: #60a5fa; }
+
+/* Abstract Background Shapes */
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+}
+.shape-1 { width: 300px; height: 300px; top: -100px; left: -100px; }
+.shape-2 { width: 200px; height: 200px; bottom: -50px; right: -50px; }
+
+/* --- RIGHT SIDE: FORM --- */
+.card-form {
+    flex: 3;
+    padding: 50px;
+}
+
+.form-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 35px;
+}
+.form-title { color: #1e2a5e; font-size: 24px; font-weight: 700; }
+.step-badge { background: #e0e7ff; color: #3b5bdb; padding: 6px 14px; border-radius: 30px; font-size: 13px; font-weight: 600; }
+
+.modern-form { display: flex; flex-direction: column; gap: 25px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.divider { border-top: 1px solid #eee; margin: 5px 0; }
+
+/* --- MODERN FLOATING LABELS --- */
+.floating-label-group { position: relative; }
+.input-icon {
+    position: absolute; left: 15px; top: 18px;
+    color: #a0aec0; font-size: 16px; transition: 0.3s;
+}
+.floating-label-group input,
+.floating-label-group select,
+.floating-label-group textarea {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #1e2a5e;
+    background: #fff;
+    transition: all 0.3s;
+    outline: none;
+}
+.floating-label-group textarea { resize: vertical; min-height: 110px; }
+
+/* The label styling */
+.floating-label-group label {
+    position: absolute;
+    left: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: #9ca3af;
+    pointer-events: none;
+    transition: 0.3s ease all;
+    background: transparent;
+}
+.floating-label-group textarea ~ label { top: 25px; }
+
+/* Active/Focus State for Inputs & Labels */
+.floating-label-group input:focus,
+.floating-label-group select:focus,
+.floating-label-group textarea:focus {
+    border-color: #3b5bdb;
+    box-shadow: 0 0 0 4px rgba(59, 91, 219, 0.1);
+}
+.floating-label-group input:focus ~ .input-icon,
+.floating-label-group select:focus ~ .input-icon,
+.floating-label-group textarea:focus ~ .input-icon {
+    color: #3b5bdb;
+}
+
+/* Move label up when focused or has content */
+.floating-label-group input:focus ~ label,
+.floating-label-group input:not(:placeholder-shown) ~ label,
+.floating-label-group select:focus ~ label,
+.floating-label-group select:valid ~ label,
+.floating-label-group textarea:focus ~ label,
+.floating-label-group textarea:not(:placeholder-shown) ~ label {
+    top: 0;
+    left: 15px;
+    font-size: 12px;
+    color: #3b5bdb;
+    background: #fff;
+    padding: 0 5px;
+    font-weight: 600;
+}
+
+/* Static label for date input */
+.static-label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+.input-wrapper-simple input {
+    width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 12px;
+    font-size: 15px; color: #1e2a5e; transition: 0.3s; outline: none;
+}
+.input-wrapper-simple input:focus { border-color: #3b5bdb; box-shadow: 0 0 0 4px rgba(59, 91, 219, 0.1); }
+
+/* --- MODERN UPLOAD BOX --- */
+.upload-container { margin-top: 10px; }
+.upload-box {
+    border: 2px dashed #cbd5e1; border-radius: 16px; padding: 25px;
+    background: #f8fafc; cursor: pointer; display: flex; align-items: center;
+    transition: all 0.3s;
+}
+.upload-box:hover { border-color: #3b5bdb; background: #eef2ff; }
+.icon-circle {
+    width: 50px; height: 50px; background: #e0e7ff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-right: 20px;
+}
+.icon-circle i { font-size: 24px; color: #3b5bdb; }
+.upload-text span { display: block; font-weight: 600; color: #1e2a5e; font-size: 15px; }
+.upload-text small { color: #64748b; font-size: 12px; }
+
+/* --- MODERN SUBMIT BUTTON --- */
+.submit-btn-modern {
+    width: 100%; background: linear-gradient(135deg, #1e2a5e, #3b5bdb);
+    color: white; padding: 16px; border: none; border-radius: 12px;
+    font-size: 18px; font-weight: 600; cursor: pointer;
+    display: flex; justify-content: center; align-items: center; gap: 12px;
+    transition: all 0.3s; margin-top: 30px; box-shadow: 0 4px 6px rgba(59, 91, 219, 0.2);
+}
+.submit-btn-modern:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(59, 91, 219, 0.3);
+}
+.submit-btn-modern:active { transform: translateY(-1px); }
+
+/* --- ANIMATIONS --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+.animate-in { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+.animate-pop-in { animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; }
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+/* --- MODERN MODAL STYLES --- */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(30, 42, 94, 0.7); backdrop-filter: blur(5px);
+    background: rgba(30, 42, 94, 0.5); backdrop-filter: blur(8px);
     display: flex; justify-content: center; align-items: center;
-    z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s;
+    opacity: 0; visibility: hidden; transition: 0.3s; z-index: 2000;
 }
 .modal-overlay.active { opacity: 1; visibility: visible; }
 
-/* Modal Box */
-.modal-box {
-    background: white; width: 400px; padding: 30px; border-radius: 15px;
-    text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-    transform: scale(0.8); transition: 0.3s;
+.modal-box-modern {
+    background: white; width: 450px; padding: 40px; border-radius: 24px;
+    text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.15);
 }
-.modal-overlay.active .modal-box { transform: scale(1); }
+.modal-header-visual {
+    width: 80px; height: 80px; background: #ecfdf5; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+}
+.modal-header-visual i { font-size: 36px; color: #10b981; transform: rotate(-10deg); }
+.modal-title { color: #1e2a5e; font-size: 26px; font-weight: 700; margin-bottom: 25px; }
 
-/* Reference ID Box */
-.ref-id-container {
-    background: #f1f5f9; border: 2px dashed #cbd5e1; padding: 15px;
-    border-radius: 8px; margin: 20px 0;
+.ref-id-container-modern {
+    background: #f8fafc; border: 2px dashed #e2e8f0; padding: 15px;
+    border-radius: 12px; margin-bottom: 25px;
 }
-.ref-label { font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 700; display: block; }
-.ref-number { font-family: monospace; font-size: 22px; font-weight: 800; color: #1e2a5e; display: block; }
+.ref-label { font-size: 12px; text-transform: uppercase; color: #64748b; font-weight: 700; display: block; margin-bottom: 5px; }
+.ref-number { font-family: 'Courier New', monospace; font-size: 28px; font-weight: 800; color: #1e2a5e; display: block; letter-spacing: 2px; }
 
-/* Button & Icons */
-.modal-icon { font-size: 50px; color: #2ecc71; margin-bottom: 15px; }
-.modal-close-btn {
-    background: #1e2a5e; color: white; border: none; padding: 12px; width: 100%;
-    border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.2s;
+.email-info-card-modern { text-align: left; margin-bottom: 30px; }
+.email-sent-text { font-size: 15px; color: #4b5563; margin-bottom: 15px; line-height: 1.5; }
+.email-sent-text strong { color: #3b5bdb; font-weight: 600; }
+
+.librarian-note-modern {
+    background: #fff7ed; border-left: 4px solid #f97316; padding: 15px; border-radius: 8px;
 }
-.modal-close-btn:hover { background: #3b82f6; }
+.librarian-note-modern strong { display: block; color: #9a3412; font-size: 14px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+.librarian-note-modern p { font-size: 14px; color: #7c2d12; margin: 0; line-height: 1.5; }
+
+.modal-close-btn-modern {
+    width: 100%; padding: 15px; background: #1e2a5e; color: white; border: none;
+    border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 16px;
+    transition: 0.2s;
+}
+.modal-close-btn-modern:hover { background: #3b5bdb; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .report-card-split { flex-direction: column; }
+    .card-visual { padding: 40px; }
+    .card-form { padding: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+}

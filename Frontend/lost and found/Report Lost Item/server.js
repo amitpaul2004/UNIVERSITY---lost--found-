@@ -14,13 +14,13 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'your_email@gmail.com',  // <--- YOUR EMAIL
-        pass: 'xxxx xxxx xxxx xxxx'    // <--- YOUR APP PASSWORD
+        user: 'rdxeveil@gmail.com',  // <--- YOUR EMAIL
+        pass: 'xdbo bzau wsqi wlde'    // <--- YOUR APP PASSWORD
     }
 });
 
 app.post('/send-report', async (req, res) => {
-    const { userEmail, collectorName, itemName, refId, dateLost, location } = req.body;
+    const { userEmail, Name, itemName, refId, dateLost, location } = req.body;
 
     console.log(`Sending email to ${userEmail} for Ref: ${refId}`);
 
@@ -36,7 +36,7 @@ app.post('/send-report', async (req, res) => {
                 </div>
 
                 <div style="padding: 30px; background-color: #ffffff;">
-                    <p>Dear <strong>${collectorName}</strong>,</p>
+                    <p>Dear <strong>${Name}</strong>,</p>
                     <p>Your report has been successfully logged in our system.</p>
 
                     <div style="background-color: #f8fafc; padding: 15px; border-left: 4px solid #3b82f6; margin: 20px 0;">

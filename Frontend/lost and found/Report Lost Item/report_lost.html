@@ -3,109 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JISU - Report Item</title>
+    <title>JISU - Report Lost Item</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="college-header">
+    <header class="college-header animate-in">
         <div class="logo-wrapper">
-            <img src="https://www.jisgroup.org/images/logo.png" alt="JIS Group Logo" class="college-logo">
+            <a href="index.html">
+                <img src="https://www.jisgroup.org/images/logo.png" alt="JIS Group Logo" class="college-logo">
+            </a>
         </div>
         <div class="header-title">Student Services Portal</div>
     </header>
 
-    <div class="main-wrapper">
-        <div class="unique-card">
+    <div class="main-container">
+        <div class="report-card-split animate-in delay-1">
+            
             <div class="card-visual">
-                <div class="visual-content">
-                    <h2>Lost Something?</h2>
-                    <p>Report it here. Our team will assist you.</p>
+                <div class="visual-content animate-in delay-2">
+                    <h1>Lost something?</h1>
+                    <p>Don't worry. Fill out the details, and we'll help you get it back.</p>
+                    <ul class="info-list">
+                        <li><i class="fa-solid fa-shield-halved"></i> Secure reporting process</li>
+                        <li><i class="fa-solid fa-bolt"></i> Quick notification system</li>
+                        <li><i class="fa-solid fa-hand-holding-heart"></i> Easy collection from library</li>
+                    </ul>
                 </div>
-                <div class="circle circle-1"></div>
-                <div class="circle circle-2"></div>
+                <div class="bg-shape shape-1"></div>
+                <div class="bg-shape shape-2"></div>
             </div>
 
             <div class="card-form">
                 <div class="form-header">
-                    <h3>Report Details</h3>
+                    <h2 class="form-title">Item Details</h2>
+                    <span class="step-badge">Step 1 of 1</span>
                 </div>
 
-                <form class="college-form" id="reportForm">
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label>Your Name</label>
-                            <div class="input-wrapper">
-                                <i class="fa-solid fa-user"></i>
-                                <input type="text" id="collector-input" placeholder="Full Name" required>
-                            </div>
+                <form id="reportForm" class="modern-form animate-in delay-2">
+                    
+                    <div class="form-row">
+                        <div class="floating-label-group">
+                            <i class="fa-solid fa-user input-icon"></i>
+                            <input type="text" id="name-input" required placeholder=" ">
+                            <label for="name-input">Name</label>
                         </div>
-                        <div class="input-group">
-                            <label>Phone</label>
-                            <div class="input-wrapper">
-                                <i class="fa-solid fa-phone"></i>
-                                <input type="tel" id="phone-input" placeholder="+91..." required>
-                            </div>
+                        <div class="floating-label-group">
+                            <i class="fa-solid fa-phone input-icon"></i>
+                            <input type="tel" id="phone-input" required placeholder=" ">
+                            <label for="phone-input">Phone Number</label>
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label>Email Address</label>
-                        <div class="input-wrapper">
-                            <i class="fa-solid fa-envelope"></i>
-                            <input type="email" id="email-input" placeholder="student@jis.ac.in" required>
+                    <div class="floating-label-group">
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                        <input type="email" id="email-input" required placeholder=" ">
+                        <label for="email-input">Your Email (student@jis.ac.in)</label>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="form-row">
+                        <div class="floating-label-group">
+                            <i class="fa-solid fa-tag input-icon"></i>
+                            <input type="text" id="item-input" required placeholder=" ">
+                            <label for="item-input">Item Name</label>
+                        </div>
+                        <div class="floating-label-group">
+                            <i class="fa-solid fa-layer-group input-icon"></i>
+                            <select id="category-input" required>
+                                <option value="" disabled selected></option>
+                                <option>Electronics</option>
+                                <option>Documents</option>
+                                <option>Clothing</option>
+                                <option>Accessories</option>
+                                <option>Others</option>
+                            </select>
+                            <label for="category-input">Category</label>
                         </div>
                     </div>
 
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label>Item Name</label>
-                            <div class="input-wrapper">
-                                <i class="fa-solid fa-tag"></i>
-                                <input type="text" id="item-input" placeholder="e.g. Blue Wallet" required>
-                            </div>
+                    <div class="form-row">
+                        <div class="floating-label-group">
+                            <i class="fa-solid fa-map-location-dot input-icon"></i>
+                            <input type="text" id="location-input" required placeholder=" ">
+                            <label for="location-input">Last Known Location</label>
                         </div>
-                        <div class="input-group">
-                            <label>Date Lost</label>
-                            <div class="input-wrapper">
+                        <div class="floating-label-group">
+                            <label for="date-input" class="static-label"></label>
+                            <div class="input-wrapper-simple">
                                 <input type="date" id="date-input" required>
                             </div>
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label>Last Known Location</label>
-                        <div class="input-wrapper">
-                            <i class="fa-solid fa-map-location-dot"></i>
-                            <input type="text" id="location-input" placeholder="e.g. Library" required>
-                        </div>
+                    <div class="floating-label-group">
+                        <textarea id="desc-input" rows="4" required placeholder=" "></textarea>
+                        <label for="desc-input">Description (Brand, color, unique marks...)</label>
                     </div>
 
-                    <button type="submit" class="submit-btn">
+                    <div class="upload-container animate-in delay-3">
+                        <input type="file" id="file-upload" hidden>
+                        <label for="file-upload" class="upload-box" id="upload-label">
+                            <div class="icon-circle">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <div class="upload-text">
+                                <span>Click to upload an image</span>
+                                <small>(Optional) AI Auto-tagging enabled</small>
+                            </div>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn-modern animate-in delay-3">
                         Submit Report <i class="fa-solid fa-paper-plane"></i>
                     </button>
+
                 </form>
             </div>
         </div>
     </div>
 
     <div id="success-modal" class="modal-overlay">
-        <div class="modal-box">
-            <div class="modal-icon"><i class="fa-solid fa-check-circle"></i></div>
-            <h3>Report Submitted!</h3>
+        <div class="modal-box-modern animate-pop-in">
+            <div class="modal-header-visual">
+                <i class="fa-solid fa-paper-plane"></i>
+            </div>
             
-            <div class="ref-id-container">
-                <span class="ref-label">Reference ID:</span>
-                <span id="generated-ref-id" class="ref-number">...</span>
+            <h3 class="modal-title">Report Submitted!</h3>
+            
+            <div class="ref-id-container-modern">
+                <span class="ref-label">Reference ID</span>
+                <span id="generated-ref-id" class="ref-number">#CLM-...</span>
             </div>
 
-            <p class="modal-message">
-                An email has been sent to <strong id="user-email-display">...</strong> with further instructions.
-                <br><br>
-                Please visit the <strong>Library Help Desk</strong> to complete the process.
-            </p>
-            <button class="modal-close-btn" onclick="closeModal()">Close</button>
+            <div class="email-info-card-modern">
+                <p class="email-sent-text">
+                    We've sent confirmation to: <br>
+                    <strong id="user-email-display">...</strong>
+                </p>
+                <div class="librarian-note-modern">
+                    <strong><i class="fa-solid fa-circle-info"></i> Next Steps:</strong>
+                    <p>Please visit the Central Library Help Desk within 24 hours. Quote your Reference ID.</p>
+                </div>
+            </div>
+
+            <button class="modal-close-btn-modern" onclick="closeModal()">Got it, thanks!</button>
         </div>
     </div>
 
