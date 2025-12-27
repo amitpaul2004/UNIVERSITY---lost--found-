@@ -71,6 +71,9 @@ const form = document.querySelector('.college-form');
             const collectorName = document.getElementById('collector-input').value;
             const userEmail = document.getElementById('email-input').value; // <--- This gets the user's specific email
             const itemName = form.querySelector('input[placeholder="e.g. Blue Backpack"]').value;
+             
+        const dateLost = form.querySelector('input[type="date"]').value;
+const location = form.querySelector('input[placeholder="e.g. Library 2nd Floor"]').value;
 
             // 2. Generate ID
             const randomNum = Math.floor(1000 + Math.random() * 9000); 
@@ -89,7 +92,10 @@ const form = document.querySelector('.college-form');
                     userEmail: userEmail,       // Sending the dynamic email
                     collectorName: collectorName,
                     itemName: itemName,
-                    refId: uniqueID
+                    refId: uniqueID,
+                    
+                    dateLost: dateLost,
+                    location: location
                 })
             })
             .then(response => {
