@@ -357,3 +357,64 @@ textarea:focus {
 .modal-close-btn:hover {
     background-color: #3b5bdb;
 }
+/* ... Keep existing styles ... */
+
+/* --- Email Confirmation Box Styles --- */
+.email-confirmation-box {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #555;
+    text-align: left; /* Align text left for better readability */
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.email-confirmation-box p {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.email-confirmation-box i {
+    color: #3b82f6; /* Blue icon */
+    margin-right: 5px;
+}
+
+/* Librarian Note Styling */
+.librarian-note {
+    background-color: #fffbeb; /* Light yellow background */
+    border-left: 3px solid #f59e0b; /* Orange accent line */
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #78350f;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.librarian-note strong {
+    color: #92400e;
+    font-style: normal;
+    display: block;
+    margin-bottom: 3px;
+}
+
+/* Reference ID Container (Existing tweak) */
+.ref-id-container {
+    background-color: #f3f4f6;
+    border: 2px dashed #cbd5e1;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.ref-label {
+    display: block; font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700;
+}
+
+.ref-number {
+    display: block; font-family: 'Courier New', monospace; font-size: 22px; font-weight: 800; color: #1e2a5e;
+}

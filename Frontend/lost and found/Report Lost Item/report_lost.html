@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" type="image/png" href="/Frontend/img/logo/favicon.png">
     <title>JISU - Report Lost Item</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,16 +23,9 @@
                 <div class="visual-content">
                     <h2><i class="fa-solid fa-person-circle-question"></i> Lost Something?</h2>
                     <p>Don't worry. Fill out the details and our Examination & Security committee will help track it down.</p>
-                    
                     <div class="info-badges">
-                        <div class="badge">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <span>Secure Handling</span>
-                        </div>
-                        <div class="badge">
-                            <i class="fa-solid fa-clock"></i>
-                            <span>24hr Response</span>
-                        </div>
+                        <div class="badge"><i class="fa-solid fa-shield-halved"></i> <span>Secure Handling</span></div>
+                        <div class="badge"><i class="fa-solid fa-clock"></i> <span>24hr Response</span></div>
                     </div>
                 </div>
                 <div class="circle circle-1"></div>
@@ -47,13 +39,12 @@
                 </div>
 
                 <form class="college-form">
-                    
                     <div class="input-row">
                         <div class="input-group">
                             <label>Collector Name</label>
                             <div class="input-wrapper">
                                 <i class="fa-solid fa-user"></i>
-                                <input type="text" placeholder="Full Name" required>
+                                <input type="text" id="collector-input" placeholder="Full Name" required>
                             </div>
                         </div>
                         <div class="input-group">
@@ -69,7 +60,7 @@
                         <label>Your Email</label>
                         <div class="input-wrapper">
                             <i class="fa-solid fa-envelope"></i>
-                            <input type="email" placeholder="student@jis.ac.in" required>
+                            <input type="email" id="email-input" placeholder="student@jis.ac.in" required>
                         </div>
                     </div>
 
@@ -132,23 +123,32 @@
                     <button type="submit" class="submit-btn">
                         Submit Report <i class="fa-solid fa-paper-plane"></i>
                     </button>
-
                 </form>
             </div>
         </div>
     </div>
+
     <div id="success-modal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-icon">
-                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-paper-plane"></i>
             </div>
             <h3>Report Submitted!</h3>
-            <p class="modal-message">
-                Thank you, <span id="collector-name-display" style="font-weight:bold;">Collector</span>. 
-                <br><br>
-                Please submit the physical item to the <strong>Library</strong> immediately for safekeeping.
-            </p>
-            <button class="modal-close-btn" onclick="closeModal()">Okay, I will do that</button>
+            
+            <div class="ref-id-container">
+                <span class="ref-label">Reference ID:</span>
+                <span id="generated-ref-id" class="ref-number">#CLM-....</span>
+            </div>
+
+            <div class="email-confirmation-box">
+                <p><i class="fa-solid fa-envelope-circle-check"></i> Email sent to: <br><strong id="user-email-display" style="color:#1e2a5e;">user@email.com</strong></p>
+                <div class="librarian-note">
+                    <strong><i class="fa-solid fa-user-graduate"></i> Librarian's Note:</strong><br>
+                    "Thank you for reporting. Please bring the item to the Central Library Help Desk within 24 hours. Quote your Reference ID."
+                </div>
+            </div>
+
+            <button class="modal-close-btn" onclick="closeModal()">Close</button>
         </div>
     </div>
 
