@@ -49,16 +49,23 @@ app.post('/send-report', async (req, res) => {
                     <div style="background-color: #fffbeb; border: 1px solid #fcd34d; padding: 15px; border-radius: 6px; margin-top: 25px;">
                         <h3 style="color: #92400e; margin-top: 0; font-size: 16px;">⚠️ Action Required</h3>
                         <p style="color: #b45309; margin-bottom: 0; font-size: 14px;">
-                            Please <strong>visit the Central Library Help Desk</strong> immediately to submit the found item or verify your lost item claim.
+                            Please <strong>visit the Library Help Desk</strong> immediately to submit the found item or verify your lost item claim.
                             <br>Quote your Reference ID at the desk.
                         </p>
                     </div>
 
-                    <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+                  <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
 
-                    <h3 style="color: #1e2a5e; font-size: 16px;">Track Status</h3>
-                    <p style="font-size: 14px; color: #666;">You can check updates on your report using our website.</p>
-                    <a href="#" style="display: inline-block; background-color: #1e2a5e; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; font-size: 14px;">Check Status</a>
+                    <h3 style="color: #1e2a5e; font-size: 16px; margin-bottom: 10px;">Track Your Request</h3>
+                    <p style="color: #666; font-size: 14px;">
+                        You can check the current status of your report at any time on our website using your Reference ID.
+                    </p>
+                    <a href="http://localhost:5500/claim_status.html" style="display: inline-block; background-color: #1e2a5e; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; font-size: 14px; margin-top: 5px;">Check Status</a>
+                </div>
+
+                <div style="background-color: #f1f5f9; padding: 15px; text-align: center; color: #888; font-size: 12px;">
+                    &copy; 2025 JIS University Student Services. <br>
+                    This is an automated message. Please do not reply directly to this email.
                 </div>
             </div>
         `
