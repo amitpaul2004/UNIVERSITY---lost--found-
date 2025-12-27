@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JISU - Report Item</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="college-header">
+        <div class="logo-wrapper">
+            <img src="https://www.jisgroup.org/images/logo.png" alt="JIS Group Logo" class="college-logo">
+        </div>
+        <div class="header-title">Student Services Portal</div>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="unique-card">
+            <div class="card-visual">
+                <div class="visual-content">
+                    <h2>Lost Something?</h2>
+                    <p>Report it here. Our team will assist you.</p>
+                </div>
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+            </div>
+
+            <div class="card-form">
+                <div class="form-header">
+                    <h3>Report Details</h3>
+                </div>
+
+                <form class="college-form" id="reportForm">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Your Name</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="collector-input" placeholder="Full Name" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Phone</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-phone"></i>
+                                <input type="tel" id="phone-input" placeholder="+91..." required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="email-input" placeholder="student@jis.ac.in" required>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Item Name</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-tag"></i>
+                                <input type="text" id="item-input" placeholder="e.g. Blue Wallet" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Date Lost</label>
+                            <div class="input-wrapper">
+                                <input type="date" id="date-input" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Last Known Location</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <input type="text" id="location-input" placeholder="e.g. Library" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Submit Report <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon"><i class="fa-solid fa-check-circle"></i></div>
+            <h3>Report Submitted!</h3>
+            
+            <div class="ref-id-container">
+                <span class="ref-label">Reference ID:</span>
+                <span id="generated-ref-id" class="ref-number">...</span>
+            </div>
+
+            <p class="modal-message">
+                An email has been sent to <strong id="user-email-display">...</strong> with further instructions.
+                <br><br>
+                Please visit the <strong>Library Help Desk</strong> to complete the process.
+            </p>
+            <button class="modal-close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
