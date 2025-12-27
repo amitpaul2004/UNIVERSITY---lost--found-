@@ -1,5 +1,8 @@
-//node server.js
-//  \Frontend\lost and found\Report Lost Item>node server.js
+//running method:
+//  cd Frontend\
+// cd lost and found
+// cd Report Lost Item
+//  node server.js
 
 const express = require('express');
 const nodemailer = require('nodemailer');

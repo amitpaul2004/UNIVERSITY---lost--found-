@@ -1,7 +1,8 @@
-//node server.js
-//  \Frontend\lost and found\Report Lost Item>node server.js
-
-
+//running method:
+//  cd Frontend\
+// cd lost and found
+// cd Report Lost Item
+//  node server.js
 
 
 
@@ -93,7 +94,7 @@ const location = form.querySelector('input[placeholder="e.g. Library 2nd Floor"]
                     collectorName: collectorName,
                     itemName: itemName,
                     refId: uniqueID,
-                    
+
                     dateLost: dateLost,
                     location: location
                 })
